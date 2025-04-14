@@ -1,0 +1,123 @@
+/**New  proposed structure**/
+CREATE TABLE `contacts` (
+  `contactid` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `title` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `donotsendemail` (
+  `id` int(50) NOT NULL,
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `issues` (
+  `id` int(10) NOT NULL,
+  `innotas_id` varchar(15) DEFAULT NULL,
+  `Project_id` varchar(20) DEFAULT NULL,
+  `project_type` varchar(100) NOT NULL,
+  `assessment_name` varchar(150) NOT NULL,
+  `issue_title` varchar(200) NOT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `severity` varchar(10) DEFAULT NULL,
+  `exploitability` varchar(10) DEFAULT NULL,
+  `status` varchar(25) DEFAULT NULL,
+  `found_on` date DEFAULT NULL,
+  `target_date` date DEFAULT NULL,
+  `app_support_contact` varchar(100) DEFAULT NULL,
+  `manager` varchar(100) DEFAULT NULL,
+  `comments` varchar(2000) DEFAULT NULL,
+  `recommendation` varchar(1000) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date_closed` date DEFAULT NULL,
+  `reminder_count` int(5) DEFAULT 0,
+  `escalation_count` int(5) DEFAULT 0,
+  `IS_MC` varchar(5) DEFAULT 'FALSE',
+  `Report_available` varchar(5) NOT NULL DEFAULT 'TRUE',
+  `IS_internal` varchar(5) NOT NULL DEFAULT 'FALSE',
+  `IS_reporting_unit` varchar(255) NOT NULL DEFAULT 'Tech Risk - Governance'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `ormc_overdue` (
+`id` int(10)
+,`innotas_id` varchar(15)
+,`project_type` varchar(100)
+,`assessment_name` varchar(150)
+,`issue_title` varchar(200)
+,`description` varchar(1000)
+,`severity` varchar(10)
+,`exploitability` varchar(10)
+,`status` varchar(25)
+,`found_on` date
+,`target_date` date
+,`app_support_contact` varchar(100)
+,`manager` varchar(100)
+,`comments` varchar(2000)
+,`recommendation` varchar(1000)
+,`date_created` datetime
+,`date_updated` timestamp
+,`date_closed` date
+,`reminder_count` int(5)
+,`escalation_count` int(5)
+,`IS_MC` varchar(5)
+,`Report_available` varchar(5)
+,`IS_internal` varchar(5)
+,`IS_reporting_unit` varchar(255)
+);
+
+CREATE TABLE `projects` (
+  `id` int(11) NOT NULL,
+  `Assessment_name` varchar(100) NOT NULL,
+  `project_type` varchar(50) NOT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
+  `Status` varchar(10) DEFAULT NULL,
+  `Cordinator` varchar(50) DEFAULT NULL,
+  `startdate` date DEFAULT NULL,
+  `completiondate` date DEFAULT NULL,
+  `comments` varchar(1000) DEFAULT NULL,
+  `TechRisk_coordinator` varchar(50) DEFAULT NULL,
+  `Security_vendor_name` varchar(50) DEFAULT NULL,
+  `attachments` varchar(1000) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_updated` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `project_type` (
+  `id` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `project_type` (`id`, `type`) VALUES
+(1, 'Change Assessment'),
+(2, 'Live Assessment'),
+(3, 'Penetration Testing'),
+(4, 'Vulnerability Assessment'),
+(5, 'Risk Assessment'),
+(6, 'Internal Audit'),
+(7, 'External Audit'),
+(8, 'Vendor Risk'),
+(9, 'Access Review'),
+
+
+CREATE TABLE `severity` (
+  `id` int(11) NOT NULL,
+  `name` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `severity` (`id`, `name`) VALUES
+(1, 'High'),
+(2, 'Medium'),
+(3, 'Low'),
+(4, 'Info'),
+(5, 'NA');
+
+CREATE TABLE `contacts` (
+  `contactid` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `title` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
